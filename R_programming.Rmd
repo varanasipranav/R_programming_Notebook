@@ -1,0 +1,491 @@
+---
+title: "R Programming"
+output: html_notebook
+---
+
+
+#1A
+```{r}
+print("hello world")
+```
+#1B
+```{r}
+a<-5
+b<-10
+sum<-a+b
+dif<-a-b
+mul<-a*b
+div<-a/b
+int_Div=a%/%b
+rem<-a%%b
+ex<-b^a
+print(paste("addition of a and b is ",sum))
+print(paste("Subtraction of a and b is ",dif))
+print(paste("Multiplication of a and b is ",mul))
+print(paste("division of a and b is ",div))
+print(paste("integer division of a and b is ",int_Div))
+print(paste("reminder of a and b is ",rem))
+print(paste("b power a is ",ex))
+
+```
+#1C
+```{r}
+var1<-"Welcome"
+var2<-"to Jntuk"
+var3<-"Have a good day"
+print(var1)
+print(var2)
+print(var3)
+```
+#2A
+```{r}
+v<-TRUE
+print(class(v))
+v<-23.5
+print(class(v))
+v<-2L
+print(class(v))
+v<-2+5i
+print(class(v))
+v<-"a"
+print(class(v))
+v<-charToRaw("hello")
+print(class(v))
+
+```
+#2B
+```{r}
+remain<-c(11,12,11,13)
+suits<-c("spades","hearts","diamonds","clubs")
+names(remain)<-suits
+length(remain)
+length(suits)
+is.vector(remain)
+is.vector(suits)
+print(remain)
+```
+#2C
+```{r}
+m<-matrix(1:6,byrow=TRUE,nrow=2)
+rownames(m)<-c("r1","r2")
+colnames(m)<-c("col1","col2","col3")
+print(m)
+```
+#3A
+```{r}
+a<-matrix(1:6,byrow = TRUE,ncol = 3)
+l<-c(6,6,6)
+print(a)
+a<-rbind(a,l)
+print(a)
+m<-c(1,4,6)
+a<-cbind(a,m)
+print(a)
+```
+#3B
+```{r}
+m<-matrix(1:9,byrow = TRUE,ncol = 3)
+print(m[1,3])
+print(m[3,1])
+print(m[2:6])
+print(m[6:9])
+
+```
+#3C
+```{r}
+#identity matrix
+m<-matrix(c(1,0,0,0,1,0,0,0,1),byrow = TRUE,ncol=3)
+a<-matrix(1:9,byrow = TRUE,ncol=3)
+print(a+b)
+print(b-a)
+print(a*b)
+
+```
+#4A
+```{r}
+obj<-c("pranav","shyam","surya","kareem")
+print(is.factor(obj))
+obj<-factor(obj)
+print(obj)
+print(is.factor(obj))
+print(levels(obj))
+```
+#4B
+```{r}
+s<-c("superman","batman","wonder woman","flash")
+print(s)
+s<-factor(s)
+print(s)
+print(levels(s))
+```
+#4c
+```{r}
+#ordered factors
+s<-c("xl","l","s","xxl","xs","m")
+s<-factor(s)
+print(s)
+ordersize<-factor(s,levels=c("xs","s","m","l","xl","xxl"),ordered=TRUE)
+print(ordersize)
+```
+#5A
+```{r}
+x<-readline(prompt ="Please enter your name")
+print(paste("the name of the avenger is",x))
+```
+#5B
+```{r}
+x<-as.numeric(readline(prompt = "enter the number"))
+print(x)
+if(x%%2==0){
+  print("Even")
+}else{
+  print("Odd")
+}
+
+
+```
+#5C
+```{r}
+n<-as.numeric(readline(prompt = "enter the number"))
+isprime=0
+if(n>1){
+  isprime=1
+  for(i in 2:(n-1)){
+    if((n%%i)==0){
+      isprime=0
+      break
+    }
+  }
+}
+if(n==2)
+  isprime=1
+if(isprime==1){
+  print(paste(n,"is prime"))
+}else{
+  print("not a prime number")
+}
+```
+#6A
+```{r}
+n<-as.numeric(readline(prompt = "enter the number"))
+fact=1
+if(n==0){
+  print("factorial is 1")
+  
+}else{
+  for(i in(1:n)){
+    fact=fact*i
+  }
+  print(paste("factorial is",fact))
+}
+```
+#6B
+```{r}
+n<-as.numeric(readline(prompt = "enter the number"))
+print(paste("factors of",n))
+if(n==0){
+  print("factors are 0")
+}else{
+  for(i in (1 : n)){
+    if(n%%i==0){
+      print(i)
+    }
+  }
+}
+```
+#6C
+```{r}
+n<-as.numeric(readline(prompt = "Enter the number"))
+fib<-function(x){
+  if(x==0||x==1){
+    return(x)
+  }else{
+    return(fib(x-1)+fib(x-2))
+  }
+}
+for(i in 0:n-1){
+  print(fib(i))
+}
+```
+#7A
+```{r}
+{
+  a = as.integer(readline('Enter a : '))
+  b = as.integer(readline('Enter b : '))
+}
+{
+  print('1. Addition')
+  print('2. Subraction')
+  print('3. Multlipication')
+  print('4. Divsion')
+  print('5. Integer Division')
+  print('6. Modulo')
+}
+ch = as.integer(readline('Enter choice : '))
+if(ch == 1){
+  print(a+b)
+} else if(ch == 2){
+  print(a-b)
+}else if(ch == 3){
+  print(a*b)
+}else if(ch == 4){
+  print(a/b)
+}else if(ch == 5){
+  print(a%/%b)
+}else if(ch == 6){
+  print(a%%b)
+}else{
+  print('choose between 1-6')
+}
+```
+#7B
+```{r}
+
+lcm <- function(x, y) {
+  greater = if(x > y) x else y
+  while(TRUE) {
+    if((greater %% x == 0) && (greater %% y == 0)){
+      lcm = greater
+      break
+    }
+    greater = greater + 1
+  }
+  return(lcm)
+}
+a=as.numeric(readline("enter a"))
+b=as.numeric(readline(("enter b")))
+print(paste("lcm is",lcm(a,b)))
+```
+#7C
+```{r}
+
+vec = 1:10
+vec
+
+
+
+
+
+# Accessing Vectors
+char_vec = c("pranav"=22,"kareem"=23,"shyam"=25)
+char_vec
+char_vec["shyam"]
+char_vec[1]
+char_vec[c(1,6,2)]
+```
+#8A
+```{r}
+row_names = c("row1", "row2", "row3", 'row4')
+col_names = c("col1", "col2", "col3")
+dim_names = list(row_names, col_names)
+mat3 =  matrix(
+               data = seq(1,4.3,0.3),
+               nrow = 4,
+               byrow = TRUE,
+               dimnames = dim_names)
+
+print(mat3)
+print(mat3['row1',])
+
+```
+#8B
+```{r}
+seq_1 = c(1,2,3)
+seq_2 = c(4,5,6)
+seq_3 = c(7,8,9)
+m1 = rbind(seq_1,seq_2,seq_3)
+m2 = cbind(seq_1,seq_2,seq_3)
+m1
+m2
+
+```
+#9A
+```{r}
+
+x= 1:9
+class(x)
+dim(x)=c(3,3)
+print(x)
+class(x)
+```
+#9B
+```{r}
+x=list(21,9,43,38)
+names(x)<-c("shyam","kareem","pranav","susmitha")
+x[1]<-"jaffa shyam"
+print(x)
+```
+#9C
+```{r}
+
+df=data.frame('R.No'=1:5,'age'=c(18,19,20,20,19),           'name'=c('shyam','kareem','surya','pranav','ramya'))
+print(df)
+```
+#10A
+```{r}
+df=data.frame('R.No'=1:5,'age'=c(18,19,20,20,19),           'name'=c('shyam','kareem','surya','pranav','ramya'))
+print(df)
+l<-list(df$name)
+m<-matrix(c(df$name,df$age),ncol = 2)
+print(df)
+print(l)
+print(m)
+l[1]
+```
+#10C
+```{r}
+
+data = c('East', 'West', 'East', 'North', 'North', 'South', 'East')
+print(data)
+print(is.factor(data))
+factor_data = factor(data)
+print(factor_data)
+print(is.factor(factor_data))
+```
+#11A
+```{r}
+
+factor_data = factor(c('East','West','East','North','West',
+             'South'),levels=c('East','West','South','North'))
+factor_data
+factor_data[c(2:5)]
+factor_data[3] = 'South'
+factor_data
+
+```
+#11B
+```{r}
+
+x=list(name="pranav",
+       acc="12223233",
+       sex="male",
+       savigs="1000",
+       spent=200)
+class(x)="atm"
+x
+```
+#11C
+```{r}
+
+x=list(name="pranav",
+       acc="12223233",
+       sex="male",
+       savigs="1000",
+       spent=200)
+class(x)="atm"
+print.atm<-function(obj){
+  cat("name is ",obj$name)
+  cat(" \n acc no is",obj$acc)
+}
+print.atm(x)
+```
+#12A
+```{r}
+setClass("student",slots = list(name="character",age="numeric",gpa="numeric"))
+s=new("student",name="pranav",age=19,gpa=7.8)
+print(s)
+
+```
+#12B
+```{r}
+setClass("student",slots = list(name="character",age="numeric",gpa="numeric"))
+setMethod('show','student',function(obj){
+  cat("name",obj@name)
+})
+s=new("student",name="pranav",age=19,gpa=7.8)
+s
+
+```
+#12C
+```{r}
+st = setRefClass('St',fields=list(name='character',age='numeric',
+                                  gpa='numeric'),
+                 methods=list(
+                   inc_age = function(x){
+                     age <<- age + x
+                   },
+                   dec_age = function(x){
+                     age <<-age - x
+                   }
+                 ))
+
+s_obj = st(name='pranav',age=19,gpa=8.5)
+s_obj
+s_obj$inc_age(5)
+s_obj$age
+s_obj$dec_age(3)
+s_obj$age
+s_obj$name = 'kareem'
+s_obj
+
+```
+#13A
+```{r}
+
+install.packages("ggplot2")
+install.packages("reshape2")
+```
+#13A
+```{r}
+
+require("reshape2")
+require("ggplot2")
+x1 = rnorm(5)
+x2 = rnorm(5)
+x3 = rnorm(5)
+x4 = rnorm(5)
+df = data.frame(x1,x2,x3,x4)
+new_df = melt(df)
+ggplot(new_df,aes(variable,value))+geom_point()
+```
+#13B
+```{r}
+
+barplot(as.matrix(df))
+```
+#13C
+```{r}
+
+data = data.frame(v1=rnorm(100),v2=rnorm(100),
+                  v3=rnorm(100),v4=rnorm(100))
+meltData = melt(data)
+boxplot(data=meltData,value~variable)
+```
+#14A
+```{r}
+install.packages("plotly")
+
+```
+#14A
+```{r}
+x=seq(1,10,0.3)
+y=x^1/2
+z=x^2
+plot(x,y,col="blue")
+lines(z,y,col="red")
+legend('topleft',
+       legend = c("equation1","equation2"),
+fill=c("red","blue"))
+
+```
+#14B
+```{r}
+require("plotly")
+fig=plot_ly(x=c('Apples','Oranges','Watermelon','Pears'),
+               y = c(3, 1, 2, 4),
+               width = 300,
+               height = 300,
+               type = 'bar')
+fig
+```
+#14C
+```{r}
+x = c(1,2,3,4,5,6,7,8,1,2,3,1,2,2)
+x
+cat('Mean :',mean(x))
+cat('Median :',median(x))
+cat('Mode :',names(sort(-table(x)))[1])
+cat('Standard Deviation: ',sqrt(var(x)))
+
+```
+
